@@ -574,7 +574,7 @@ public class ObligSBinTre<T> implements Beholder<T>
       }
       return temp;
     }
-   
+
     @Override
     public void remove() {
       if (!removeOK)
