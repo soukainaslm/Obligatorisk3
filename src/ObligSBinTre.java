@@ -12,7 +12,7 @@ public class ObligSBinTre<T> implements Beholder<T>
 
   }
 
-  private static final class Node<T>   // en indre nodeklasse
+  private static final class Node<T>
   {
     private T verdi;                   // nodens verdi
     private Node<T> venstre, høyre;    // venstre og høyre barn
@@ -82,7 +82,7 @@ public class ObligSBinTre<T> implements Beholder<T>
     }
 
     antall++;
-    endringer++;// én verdi mer i treet
+    endringer++;
     return true;
   }
 
@@ -124,7 +124,7 @@ public class ObligSBinTre<T> implements Beholder<T>
 
     if (p.venstre == null || p.høyre == null){  // Tilfelle 1) og 2)
 
-      Node<T> b = p.venstre != null ? p.venstre : p.høyre;  // b for barn
+      Node<T> b = p.venstre != null ? p.venstre : p.høyre;
       if (p == rot) {
         rot = b;
       }
@@ -172,7 +172,7 @@ public class ObligSBinTre<T> implements Beholder<T>
     return true;
 
 
-    //throw new UnsupportedOperationException("Ikke kodet ennå!");
+
   }
 
   public int fjernAlle(T verdi)
@@ -181,16 +181,8 @@ public class ObligSBinTre<T> implements Beholder<T>
     while (fjern(verdi)) verdiAntall++;
     return verdiAntall;
 
-        /*
 
-          int nFjernet = 0;
-        while (fjern(verdi)) {
-            nFjernet++;
-        }
-        return nFjernet;
-        */
 
-    //throw new UnsupportedOperationException("Ikke kodet ennå!");
   }
 
   @Override
@@ -272,21 +264,6 @@ public class ObligSBinTre<T> implements Beholder<T>
     }
     return p;
 
-    /*
-        if(p.høyre == null && p.venstre == null) return null;
-         if(p.høyre !=null){
-            p = p.høyre;
-            while(p.venstre != null && p.forelder.høyre != p){
-                p = p.venstre;
-            }
-             return p.forelder;
-        }
-        else if(p.høyre == null && p.venstre!= null){
-            return p.forelder;
-        }
-        return p; */
-
-    // throw new UnsupportedOperationException("Ikke kodet ennå!");
   }
 
   @Override
@@ -313,58 +290,8 @@ public class ObligSBinTre<T> implements Beholder<T>
 
 
     return sb.toString();
-       /*
-      else if(antall == 1) return"[" + rot.verdi + "]";
 
 
-       String tekst = "[";
-
-        Node<T> p=  rot;
-
-        while(p.venstre != null){
-            p = p.venstre;
-        }
-
-        tekst += p.verdi;
-        p = nesteInorden(p);
-
-        while(nesteInorden(p)!= null){
-            tekst += ", " + p.verdi;
-            p = nesteInorden(p);
-        }
-
-        tekst += "]";
-
-        return tekst;
-*/
-
-      /* if(antall < 1){ return  "[]";}
-        //else if(tom()){return"[]";}
-
-       String tekst = "[";
-       Node<T> p = rot;
-
-       for (;p!=null;){
-           p = p.venstre;
-       }
-
-
-       tekst += p.verdi;
-       p = nesteInorden(p);
-
-
-       for(int i = 1;i<antall;i++){
-           tekst += "," + p.verdi;
-           p = nesteInorden(p);
-       }
-
-
-       tekst += "]";
-       return tekst;
-*/
-
-
-    //  throw new UnsupportedOperationException("Ikke kodet ennå!");
   }
 
   public String omvendtString()
@@ -476,35 +403,6 @@ public class ObligSBinTre<T> implements Beholder<T>
     sb.append("]");
     return sb.toString();
 
-/*
-        StringBuilder sb = new StringBuilder();
-        sb.append("[").append(p.verdi);
-
-        while(p.høyre != null || p.venstre != null){
-
-            //sammenligner verdier om hvor de skal, -1 = venstre, 0 eller høyere = høyre
-            //sammenligner siste node, og rotnoden.
-            int cmp = comp.compare(verdi, p.verdi);
-
-
-            if(cmp < 0){
-                p = p.venstre;
-            }else if(cmp == 0){
-                p = p.høyre;
-            }else{
-                p = p.høyre;
-            }
-            sb.append(", ").append(p.verdi);
-        }
-
-        sb.append("]");
-
-        return sb.toString(); */
-
-
-
-
-    // throw new UnsupportedOperationException("Ikke kodet ennå!");
 
   }
 
@@ -676,33 +574,7 @@ public class ObligSBinTre<T> implements Beholder<T>
       }
       return temp;
     }
-    /*
-            @Override
-            public T next()
-            {
-                if(!tom()){
-                    T verdi;
-                    if(nesteInorden(p) != null){
-                        p = nesteInorden(p);
-                        verdi = p.verdi;
-                    }else {
-                        throw new NoSuchElementException("Finnes ikke flere bladnoder");
-                    }
-                    while (!(p.høyre == null && p.venstre == null)) {
-                        if(nesteInorden(p) == null){
-                            throw new NoSuchElementException("Finnes ikke flere bladnoder");
-                        }
-                        p = nesteInorden(p);
-                        verdi = p.verdi;
-
-                    }
-
-                    return verdi;
-                }
-
-                throw new NoSuchElementException("Finnes ikke flere bladnoder");
-            }
-    */
+   
     @Override
     public void remove() {
       if (!removeOK)
